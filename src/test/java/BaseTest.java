@@ -27,7 +27,8 @@ public class BaseTest {
     public static ExtentTest logger;
     @BeforeTest
     public void beforeTestMethod() {
-        ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(System.getProperty(Constants.reportsFilePath)+File.separator+"reports"+File.separator+"AutomationReport.html");
+
+        ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(System.getProperty(Constants.reportsFilePath)+File.separator+"reports"+File.separator+"AutomationReport"+System.currentTimeMillis()+".html");
         htmlReporter.config().setTestViewChartLocation(ChartLocation.BOTTOM);
         htmlReporter.config().setChartVisibilityOnOpen(true);
         htmlReporter.config().setTheme(Theme.STANDARD);
@@ -39,6 +40,7 @@ public class BaseTest {
         extent.setSystemInfo("Automation Tester", "Dhineswar A T");
         extent.setSystemInfo("Organization", "VeralevelOrg");
         extent.setSystemInfo("Build no", "CodeAssessment-TestVag 1.0");
+
     }
 
     @BeforeMethod
@@ -47,7 +49,7 @@ public class BaseTest {
         logger=extent.createTest(testMethod.getName());
         setupDriver(browserName);
         driver.manage().window().maximize();
-        driver.get(Constants.url);
+        driver.get(Constants.imdbURL);
     }
 
     @AfterMethod
@@ -69,7 +71,7 @@ public class BaseTest {
             Markup m = MarkupHelper.createLabel(logText,ExtentColor.BLUE);
             logger.log(Status.SKIP,m);
             }
-        driver.quit();
+//        driver.quit();
     }
 
     @AfterTest

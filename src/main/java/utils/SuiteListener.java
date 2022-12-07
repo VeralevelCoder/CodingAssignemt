@@ -28,7 +28,7 @@ public class SuiteListener implements ITestListener, IAnnotationTransformer {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        String fileName = System.getProperty("user.dir")+ File.separator+"screenshots"+File.separator+result.getMethod().getMethodName();
+        String fileName = System.getProperty("user.dir")+ File.separator+"screenshots"+File.separator+result.getMethod().getMethodName()+System.currentTimeMillis();
         File f =((TakesScreenshot) BaseTest.driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(f, new File(fileName + ".png"));
