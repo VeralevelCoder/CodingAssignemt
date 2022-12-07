@@ -3,6 +3,7 @@ package main.java.pageEvents;
 import main.java.utils.ElementFetch;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
+import test.java.BaseTest;
 
 import java.io.IOException;
 
@@ -13,10 +14,12 @@ public class ImbdPage extends CommonEvents {
     }
 
     public void imdbSearchMovie(String movieName) throws InterruptedException {
+        BaseTest.logger.info("Searching for the "+movieName+" in searchbar");
         final WebElement imdbSearchBox = elementFetch.getWebElement("XPATH", main.java.pageObject.HomePage.imdbSearchBox);
         enterTextSelection(imdbSearchBox,movieName);
     }
     public String imdbGetValue(String movieDetail){
+        BaseTest.logger.info("Retrieving movie details of "+movieDetail);
         final WebElement imdbMovieReleaseDate = elementFetch.getWebElement("XPATH", main.java.pageObject.HomePage.imdbMovieReleaseDate);
         final WebElement getImdbMovieCountryOfOrigin = elementFetch.getWebElement("XPATH", main.java.pageObject.HomePage.getImdbMovieCountryOfOrigin);
 

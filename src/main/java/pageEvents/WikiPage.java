@@ -3,6 +3,7 @@ package main.java.pageEvents;
 import main.java.utils.ElementFetch;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebElement;
+import test.java.BaseTest;
 
 import java.io.IOException;
 
@@ -14,10 +15,12 @@ public class WikiPage extends CommonEvents {
     }
 
     public void wikiSearchMovie(String movieName) throws InterruptedException {
+        BaseTest.logger.info("Searching for the "+movieName+" in searchbar");
         final WebElement SearchBox = elementFetch.getWebElement("XPATH", main.java.pageObject.HomePage.wikiSearchBox);
         enterTextSelection(SearchBox,movieName);
     }
     public String wikiGetValue(String movieDetail){
+        BaseTest.logger.info("Retrieving movie details of "+movieDetail);
         final WebElement MovieReleaseDate = elementFetch.getWebElement("XPATH", main.java.pageObject.HomePage.wikiMovieReleaseDate);
         final WebElement getImdbMovieCountryOfOrigin = elementFetch.getWebElement("XPATH", main.java.pageObject.HomePage.wikiMovieCountryOfOrigin);
 
